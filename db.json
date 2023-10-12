@@ -1,0 +1,28 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "name": "João",
+      "email": "joaodocaminhao@gmail.com",
+      "phoneNumber": "+55 61 99885426"
+    },
+    {
+      "id": 2,
+      "name": "Maria",
+      "email": "mariadasflores@gmail.com",
+      "phoneNumber": "+55 62 99887716"
+    },
+    {
+      "id": 3,
+      "name": "Ricardo",
+      "email": "rick007@gmail.com",
+      "phoneNumber": "+55 61 98335532"
+    },
+    {
+      "id": 4,
+      "name": "Rebeca",
+      "email": "beca92@gmail.com",
+      "phoneNumber": "+55 11 97262513"
+    }
+  ]
+}
