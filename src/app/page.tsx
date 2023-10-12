@@ -28,7 +28,7 @@ export default function Home() {
       <ul>
         {contacts.map((entry, index) => (
           <li key={index}>
-            <Link href={`/${entry.id}`}>{entry.name}</Link>
+            <Link href={`/details/${entry.id}`}>{entry.name}</Link>
           </li>
         ))}
       </ul>

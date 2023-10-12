@@ -7,6 +7,8 @@ export type Entry = {
   id?: number;
 };
 
+export type ContactDetailsProps = { params: { id: string } };
+
 export type FormProps = {
   handleSubmit: (event: FormEvent, inputValues: Entry) => Promise<void>;
   initialValues: Entry;
