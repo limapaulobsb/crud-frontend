@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import api from '@/api';
 import Form from '@/components/Form';
+import { MainButton } from '@/components/styled';
 import type { Entry, ContactDetailsProps } from '@/types';
 
 export default function ContactDetailsProps({ params }: ContactDetailsProps) {
@@ -44,12 +45,12 @@ export default function ContactDetailsProps({ params }: ContactDetailsProps) {
       {contact && (
         <Form handleSubmit={handleSubmit} initialValues={contact} disabled={!editing} />
       )}
-      <button type="button" onClick={() => setEditing(true)}>
+      <MainButton type="button" onClick={() => setEditing(true)}>
         Editar
-      </button>
-      <button type="button" onClick={deleteContact}>
+      </MainButton>
+      <MainButton type="button" onClick={deleteContact}>
         Apagar
-      </button>
+      </MainButton>
     </main>
   );
 }
