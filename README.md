@@ -4,6 +4,7 @@ The goal of this project is to demonstrate examples of CRUD operations for front
 
 - Next.js
 - TypeScript
+- Jest
 - styled-components
 - json-server
 
@@ -37,4 +38,10 @@ Run the application:
 
 ```bash
   npm run dev
+```
+
+## Running the tests
+
+```bash
+  npm test
 ```
