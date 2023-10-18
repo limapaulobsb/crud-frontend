@@ -27,8 +27,8 @@ export default function ContactDetailsProps({ params }: ContactDetailsProps) {
 
   useEffect(() => {
     const getContact = async () => {
-      const data = await api.getContact(id);
-      setContact(data);
+      const data = await api.fetchContact(id);
+      if (Object.keys(data).length) setContact(data as Entry);
     };
 
     getContact();

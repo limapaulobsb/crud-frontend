@@ -10,8 +10,11 @@ export default function Home() {
 
   useEffect(() => {
     const getContacts = async () => {
-      const data = await api.getContacts();
-      setContacts(data);
+      const data = await api.fetchContacts();
+
+      if (data.length) {
+        setContacts(data);
+      }
     };
 
     getContacts();

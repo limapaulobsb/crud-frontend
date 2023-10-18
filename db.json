@@ -2,26 +2,26 @@
   "contacts": [
     {
       "id": 1,
+      "email": "joao@gmail.com",
       "name": "João",
-      "email": "joaodocaminhao@gmail.com",
       "phoneNumber": "+55 61 99885426"
     },
     {
       "id": 2,
+      "email": "maria@gmail.com",
       "name": "Maria",
-      "email": "mariadasflores@gmail.com",
       "phoneNumber": "+55 62 99887716"
     },
     {
       "id": 3,
-      "name": "Ricardo",
-      "email": "rick007@gmail.com",
+      "email": "vitoria@gmail.com",
+      "name": "Vitória",
       "phoneNumber": "+55 61 98335532"
     },
     {
       "id": 4,
-      "name": "Rebeca",
-      "email": "beca92@gmail.com",
+      "email": "catarina@gmail.com",
+      "name": "Catarina",
       "phoneNumber": "+55 11 97262513"
     }
   ]
