@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import api from '@/api';
-import Form from '@/components/Form';
+import { Form, Header } from '@/components';
 import type { Entry } from '@/types';
 
 export default function newContact() {
@@ -18,12 +18,7 @@ export default function newContact() {
 
   return (
     <main>
-      <header>
-        <h1>Novo contato</h1>
-        <nav>
-          <Link href={'/'}>Voltar</Link>
-        </nav>
-      </header>
+      <Header heading="Novo contato" navLinks={[['/', 'Voltar']]} />
       <Form
         handleSubmit={handleSubmit}
         initialValues={{

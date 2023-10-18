@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import api from '@/api';
-import Form from '@/components/Form';
+import { Form, Header } from '@/components';
 import { MainButton } from '@/components/styled';
 import type { Entry, ContactDetailsProps } from '@/types';
 
@@ -36,12 +36,7 @@ export default function ContactDetailsProps({ params }: ContactDetailsProps) {
 
   return (
     <main>
-      <header>
-        <h1>Detalhes do contato</h1>
-        <nav>
-          <Link href={'/'}>Voltar</Link>
-        </nav>
-      </header>
+      <Header heading="Detalhes do contato" navLinks={[['/', 'Voltar']]} />
       {contact && (
         <Form handleSubmit={handleSubmit} initialValues={contact} disabled={!editing} />
       )}

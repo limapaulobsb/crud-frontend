@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 import api from '@/api';
+import { Header } from '@/components';
 import type { Entry } from '@/types';
 
 export default function Home() {
@@ -22,12 +23,7 @@ export default function Home() {
 
   return (
     <main>
-      <header>
-        <h1>Lista de contatos</h1>
-        <nav>
-          <Link href={'/new'}>Novo contato</Link>
-        </nav>
-      </header>
+      <Header heading="Lista de contatos" navLinks={[['/new', 'Novo contato']]} />
       <ul>
         {contacts.map((entry, index) => (
           <li key={index}>
