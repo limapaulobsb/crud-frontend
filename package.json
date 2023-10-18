@@ -8,8 +8,7 @@
     "lint": "next lint",
     "server": "npx json-server --watch db.json",
     "start": "next start",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "next": "13.5.4",

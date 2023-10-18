@@ -32,6 +32,7 @@ describe('createContact function', () => {
 describe('fetchContact function', () => {
   it('should return the correct contact', async () => {
     const data = await api.fetchContact('1');
+
     expect(data).toEqual({
       id: 1,
       email: 'joao@gmail.com',

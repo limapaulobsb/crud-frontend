@@ -10,7 +10,7 @@ export type Entry = {
 export type ContactDetailsProps = { params: { id: string } };
 
 export type FormProps = {
-  handleSubmit: (event: FormEvent, inputValues: Entry) => Promise<void>;
+  handleSubmit: (event: FormEvent<HTMLFormElement>, inputValues: Entry) => Promise<void>;
   initialValues: Entry;
   disabled?: boolean;
 };

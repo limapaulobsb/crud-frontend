@@ -5,6 +5,11 @@ export const Button = styled.button`
   cursor: pointer;
   font-family: inherit;
   font-size: inherit;
+
+  &:disabled {
+    cursor: unset;
+    opacity: 0.4;
+  }
 `;
 
 export const MainButton = styled(Button)`

@@ -17,11 +17,14 @@ export default function Form({ handleSubmit, initialValues, disabled }: FormProp
   };
 
   return (
-    <form onSubmit={(event: FormEvent) => handleSubmit(event, inputValues)}>
+    <form
+      onSubmit={(event: FormEvent<HTMLFormElement>) => handleSubmit(event, inputValues)}
+    >
       <label>
         <span>Nome:</span>
         <MainInput
           name="name"
+          placeholder="Digite um nome..."
           value={inputValues.name}
           onChange={handleChange}
           disabled={disabled}
@@ -31,6 +34,7 @@ export default function Form({ handleSubmit, initialValues, disabled }: FormProp
         <span>E-mail:</span>
         <MainInput
           name="email"
+          placeholder="Digite um e-mail..."
           value={inputValues.email}
           onChange={handleChange}
           disabled={disabled}
@@ -40,12 +44,20 @@ export default function Form({ handleSubmit, initialValues, disabled }: FormProp
         <span>Telefone:</span>
         <MainInput
           name="phoneNumber"
+          placeholder="Digite um telefone..."
           value={inputValues.phoneNumber}
           onChange={handleChange}
           disabled={disabled}
         />
       </label>
-      {!disabled && <MainButton type="submit">Salvar</MainButton>}
+      {!disabled && (
+        <MainButton
+          type="submit"
+          disabled={!inputValues.name || (!inputValues.email && !inputValues.phoneNumber)}
+        >
+          Salvar
+        </MainButton>
+      )}
     </form>
   );
 }
