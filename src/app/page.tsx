@@ -1,9 +1,8 @@
 'use client';
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
 
 import api from '@/api';
-import { Header } from '@/components';
+import { ContactList, Header } from '@/components';
 import type { Entry } from '@/types';
 
 export default function Home() {
@@ -24,13 +23,7 @@ export default function Home() {
   return (
     <main>
       <Header heading="Lista de contatos" navLinks={[['/new', 'Novo contato']]} />
-      <ul>
-        {contacts.map((entry, index) => (
-          <li key={index}>
-            <Link href={`/details/${entry.id}`}>{entry.name}</Link>
-          </li>
-        ))}
-      </ul>
+      <ContactList contacts={contacts} />
     </main>
   );
 }

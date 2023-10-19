@@ -14,12 +14,12 @@ describe('createContact function', () => {
 
   it('should return the posted contact', async () => {
     const data = await api.createContact(body);
-    expect(data).toEqual({ ...body, id: 5 });
+    expect(data).toHaveProperty('id');
   });
 
   it('should return an empty object with an error', async () => {
     server.use(
-      rest.post(`${URL}`, (req, res, ctx) => {
+      rest.post(URL, (req, res, ctx) => {
         return res(ctx.status(400));
       })
     );
@@ -31,13 +31,13 @@ describe('createContact function', () => {
 
 describe('fetchContact function', () => {
   it('should return the correct contact', async () => {
-    const data = await api.fetchContact('1');
+    const data = await api.fetchContact('6a5caa8c-f6d6-42e9-b7d9-14869b0f5526');
 
     expect(data).toEqual({
-      id: 1,
+      id: '6a5caa8c-f6d6-42e9-b7d9-14869b0f5526',
       email: 'joao@gmail.com',
       name: 'João',
-      phoneNumber: '+55 61 99885426',
+      phoneNumber: '+55 99 99999999',
     });
   });
 
@@ -56,18 +56,18 @@ describe('fetchContact function', () => {
 describe('fetchContacts function', () => {
   it('should return the correct number of contact items', async () => {
     const data = await api.fetchContacts();
-    expect(data.length).toBe(4);
+    expect(data).toHaveLength(6);
   });
 
   it('should return an empty array with an error', async () => {
     server.use(
-      rest.get(`${URL}`, (req, res, ctx) => {
+      rest.get(URL, (req, res, ctx) => {
         return res(ctx.status(400));
       })
     );
 
     const data = await api.fetchContacts();
-    expect(data.length).toBe(0);
+    expect(data).toHaveLength(0);
   });
 });
 

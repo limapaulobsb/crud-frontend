@@ -8,10 +8,10 @@ describe('Header', () => {
     render(<Header heading="Isso é um Header" />);
 
     // Act
-    const myElem = screen.getByRole('heading', { name: 'Isso é um Header' });
+    const heading = screen.getByRole('heading', { name: 'Isso é um Header' });
 
     // Assert
-    expect(myElem).toBeInTheDocument();
+    expect(heading).toBeInTheDocument();
   });
 
   it('should render navigation links', () => {
@@ -27,13 +27,13 @@ describe('Header', () => {
     );
 
     // Act
-    const elemArray = screen.getAllByRole('link');
+    const links = screen.getAllByRole('link');
 
     // Assert
-    expect(elemArray.length).toBe(2);
-    expect(elemArray[0]).toHaveAttribute('href', '/contacts');
-    expect(elemArray[0]).toHaveTextContent('Contatos');
-    expect(elemArray[1]).toHaveAttribute('href', '/new');
-    expect(elemArray[1]).toHaveTextContent('Novo contato');
+    expect(links).toHaveLength(2);
+    expect(links[0]).toHaveAttribute('href', '/contacts');
+    expect(links[0]).toHaveTextContent('Contatos');
+    expect(links[1]).toHaveAttribute('href', '/new');
+    expect(links[1]).toHaveTextContent('Novo contato');
   });
 });

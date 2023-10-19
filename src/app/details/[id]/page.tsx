@@ -6,9 +6,9 @@ import { useRouter } from 'next/navigation';
 import api from '@/api';
 import { Form, Header } from '@/components';
 import { MainButton } from '@/components/styled';
-import type { Entry, ContactDetailsProps } from '@/types';
+import type { Entry, ContactProps } from '@/types';
 
-export default function ContactDetailsProps({ params }: ContactDetailsProps) {
+export default function Contact({ params }: ContactProps) {
   const [contact, setContact] = useState<null | Entry>(null);
   const [editing, setEditing] = useState(false);
   const router = useRouter();
