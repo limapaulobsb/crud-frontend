@@ -31,12 +31,12 @@ describe('createContact function', () => {
 
 describe('fetchContact function', () => {
   it('should return the correct contact', async () => {
-    const data = await api.fetchContact('6a5caa8c-f6d6-42e9-b7d9-14869b0f5526');
+    const data = await api.fetchContact('2DNW3qN');
 
     expect(data).toEqual({
-      id: '6a5caa8c-f6d6-42e9-b7d9-14869b0f5526',
-      email: 'joao@gmail.com',
-      name: 'João',
+      id: '2DNW3qN',
+      email: 'vitoria@gmail.com',
+      name: 'Vitória',
       phoneNumber: '+55 99 99999999',
     });
   });
@@ -56,7 +56,7 @@ describe('fetchContact function', () => {
 describe('fetchContacts function', () => {
   it('should return the correct number of contact items', async () => {
     const data = await api.fetchContacts();
-    expect(data).toHaveLength(6);
+    expect(data).toHaveLength(8);
   });
 
   it('should return an empty array with an error', async () => {
@@ -79,8 +79,8 @@ describe('updateContact function', () => {
   };
 
   it('should return the updated contact', async () => {
-    const data = await api.updateContact('1', body);
-    expect(data).toEqual({ ...body, id: 1 });
+    const data = await api.updateContact('2DNW3qN', body);
+    expect(data).toEqual({ ...body, id: '2DNW3qN' });
   });
 
   it('should return an empty object with an error', async () => {
@@ -90,7 +90,7 @@ describe('updateContact function', () => {
       })
     );
 
-    const data = await api.updateContact('1', body);
+    const data = await api.updateContact('2DNW3qN', body);
     expect(data).toEqual({});
   });
 });

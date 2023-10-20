@@ -8,18 +8,18 @@ import Contact from '../page';
 jest.mock('next/navigation', () => jest.requireActual('next-router-mock'));
 
 beforeEach(() => {
-  mockRouter.push('/details/6a5caa8c-f6d6-42e9-b7d9-14869b0f5526');
+  mockRouter.push('/details/2DNW3qN');
 });
 
 describe('Contact page', () => {
   describe('Render', () => {
     it('should render a heading and navigation links', () => {
       // Arrange
-      render(<Contact params={{ id: '6a5caa8c-f6d6-42e9-b7d9-14869b0f5526' }} />);
+      render(<Contact params={{ id: '2DNW3qN' }} />);
 
       // Act
       const heading = screen.getByRole('heading', { name: /detalhes do contato/i });
-      const link = screen.getByText('Voltar');
+      const link = screen.getByRole('link', { name: /voltar/i });
 
       // Assert
       expect(heading).toBeInTheDocument();
@@ -28,7 +28,7 @@ describe('Contact page', () => {
 
     it('should render a disabled form with filled inputs', async () => {
       // Arrange
-      render(<Contact params={{ id: '6a5caa8c-f6d6-42e9-b7d9-14869b0f5526' }} />);
+      render(<Contact params={{ id: '2DNW3qN' }} />);
 
       // Act
       const form = await screen.findByRole('form');
@@ -36,8 +36,8 @@ describe('Contact page', () => {
 
       // Assert
       expect(form).toHaveFormValues({
-        name: 'João',
-        email: 'joao@gmail.com',
+        name: 'Vitória',
+        email: 'vitoria@gmail.com',
         phoneNumber: '+55 99 99999999',
       });
 
@@ -46,7 +46,7 @@ describe('Contact page', () => {
 
     it('should render buttons to edit and delete the contact', () => {
       // Arrange
-      render(<Contact params={{ id: '6a5caa8c-f6d6-42e9-b7d9-14869b0f5526' }} />);
+      render(<Contact params={{ id: '2DNW3qN' }} />);
 
       // Act
       const editButton = screen.getByRole('button', { name: /editar/i });
@@ -61,7 +61,7 @@ describe('Contact page', () => {
   describe('Behavior', () => {
     it('should toggle form when edit button is clicked', async () => {
       // Arrange
-      render(<Contact params={{ id: '6a5caa8c-f6d6-42e9-b7d9-14869b0f5526' }} />);
+      render(<Contact params={{ id: '2DNW3qN' }} />);
 
       // Act
       const editButton = screen.getByRole('button', { name: /editar/i });
@@ -77,7 +77,7 @@ describe('Contact page', () => {
       const apiSpy = jest.spyOn(api, 'updateContact');
 
       // Arrange
-      render(<Contact params={{ id: '6a5caa8c-f6d6-42e9-b7d9-14869b0f5526' }} />);
+      render(<Contact params={{ id: '2DNW3qN' }} />);
 
       // Act
       const editButton = screen.getByRole('button', { name: /editar/i });
@@ -88,16 +88,16 @@ describe('Contact page', () => {
 
       await userEvent.clear(nameInput);
       await userEvent.clear(emailInput);
-      await userEvent.type(nameInput, 'João do Caminhão');
-      await userEvent.type(emailInput, 'joaodocaminhao@gmail.com');
+      await userEvent.type(nameInput, 'Amorzão');
+      await userEvent.type(emailInput, 'amorzao@gmail.com');
 
       const submitButton = screen.getByRole('button', { name: /salvar/i });
       await userEvent.click(submitButton);
 
       // Assert
-      expect(apiSpy).toBeCalledWith('6a5caa8c-f6d6-42e9-b7d9-14869b0f5526', {
-        name: 'João do Caminhão',
-        email: 'joaodocaminhao@gmail.com',
+      expect(apiSpy).toBeCalledWith('2DNW3qN', {
+        name: 'Amorzão',
+        email: 'amorzao@gmail.com',
         phoneNumber: '+55 99 99999999',
       });
 
@@ -114,7 +114,7 @@ describe('Contact page', () => {
       confirmSpy.mockImplementation(jest.fn(() => true));
 
       // Arrange
-      render(<Contact params={{ id: '6a5caa8c-f6d6-42e9-b7d9-14869b0f5526' }} />);
+      render(<Contact params={{ id: '2DNW3qN' }} />);
 
       // Act
       const deleteButton = screen.getByRole('button', { name: /apagar/i });
@@ -122,7 +122,7 @@ describe('Contact page', () => {
 
       // Assert
       expect(confirmSpy).toBeCalled();
-      expect(apiSpy).toBeCalledWith('6a5caa8c-f6d6-42e9-b7d9-14869b0f5526');
+      expect(apiSpy).toBeCalledWith('2DNW3qN');
       expect(mockRouter.asPath).toBe('/');
 
       apiSpy.mockRestore();
@@ -135,7 +135,7 @@ describe('Contact page', () => {
       confirmSpy.mockImplementation(jest.fn(() => false));
 
       // Arrange
-      render(<Contact params={{ id: '6a5caa8c-f6d6-42e9-b7d9-14869b0f5526' }} />);
+      render(<Contact params={{ id: '2DNW3qN' }} />);
 
       // Act
       const deleteButton = screen.getByRole('button', { name: /apagar/i });
@@ -144,7 +144,7 @@ describe('Contact page', () => {
       // Assert
       expect(confirmSpy).toBeCalled();
       expect(apiSpy).not.toBeCalled();
-      expect(mockRouter.asPath).toBe('/details/6a5caa8c-f6d6-42e9-b7d9-14869b0f5526');
+      expect(mockRouter.asPath).toBe('/details/2DNW3qN');
 
       apiSpy.mockRestore();
       confirmSpy.mockRestore();

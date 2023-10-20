@@ -1,5 +1,6 @@
 'use client';
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+
+import { ChangeEvent, FormEvent, useState } from 'react';
 
 import { MainButton, MainInput } from '@/components/styled';
 import type { FormProps } from '@/types';

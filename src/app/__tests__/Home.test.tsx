@@ -9,7 +9,7 @@ describe('Home page', () => {
 
     // Act
     const heading = screen.getByRole('heading', { name: /lista de contatos/i });
-    const link = screen.getByText('Novo contato');
+    const link = screen.getByRole('link', { name: /novo contato/i });
 
     // Assert
     expect(heading).toBeInTheDocument();
@@ -21,10 +21,9 @@ describe('Home page', () => {
     render(<Home />);
 
     // Act
-    const list = screen.getByRole('list');
-    const links = await within(list).findAllByRole('link');
+    const listItems = await screen.findAllByRole('listitem');
 
     // Assert
-    expect(links).toHaveLength(6);
+    expect(listItems).toHaveLength(8);
   });
 });

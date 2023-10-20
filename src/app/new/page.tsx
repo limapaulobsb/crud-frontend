@@ -1,5 +1,6 @@
 'use client';
-import React, { FormEvent } from 'react';
+
+import { FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 
 import api from '@/api';
@@ -19,7 +20,7 @@ export default function NewContact() {
     <main>
       <Header heading="Novo contato" navLinks={[['/', 'Voltar']]} />
       <Form
-        ariaLabel='form'
+        ariaLabel="form"
         initialValues={{
           name: '',
           email: '',
