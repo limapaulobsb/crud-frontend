@@ -36,7 +36,7 @@ export default function Contact({ params }: ContactProps) {
     };
 
     getContact();
-  }, []);
+  }, [id]);
 
   return (
     <main>

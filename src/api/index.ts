@@ -2,7 +2,7 @@ import type { Entry } from '@/types';
 
 const URL = 'http://localhost:3001/contacts';
 
-export default {
+const api = {
   async createContact(body: Entry): Promise<Entry | {}> {
     try {
       const response = await fetch(URL, {
@@ -90,3 +90,5 @@ export default {
     }
   },
 };
+
+export default api;

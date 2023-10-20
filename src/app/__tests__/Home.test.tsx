@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 
 import Home from '../page';
 
@@ -22,10 +22,9 @@ describe('Home page', () => {
 
     // Act
     const list = screen.getByRole('list');
+    const links = await within(list).findAllByRole('link');
 
     // Assert
-    await waitFor(() => {
-      expect(list.children).toHaveLength(6);
-    });
+    expect(links).toHaveLength(6);
   });
 });
