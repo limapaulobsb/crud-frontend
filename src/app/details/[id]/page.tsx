@@ -1,6 +1,5 @@
 'use client';
 import React, { FormEvent, useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import api from '@/api';
@@ -21,14 +20,19 @@ export default function Contact({ params }: ContactProps) {
   };
 
   const deleteContact = async () => {
-    await api.deleteContact(id);
-    router.push('/');
+    if (confirm('Deseja mesmo excluir este contato?')) {
+      await api.deleteContact(id);
+      router.push('/');
+    }
   };
 
   useEffect(() => {
     const getContact = async () => {
-      const data = await api.fetchContact(id);
-      if (Object.keys(data).length) setContact(data as Entry);
+      const data = (await api.fetchContact(id)) as Entry;
+      if (Object.keys(data).length) {
+        delete data.id;
+        setContact(data);
+      }
     };
 
     getContact();
@@ -38,10 +42,15 @@ export default function Contact({ params }: ContactProps) {
     <main>
       <Header heading="Detalhes do contato" navLinks={[['/', 'Voltar']]} />
       {contact && (
-        <Form handleSubmit={handleSubmit} initialValues={contact} disabled={!editing} />
+        <Form
+          ariaLabel="form"
+          initialValues={contact}
+          handleSubmit={handleSubmit}
+          disabled={!editing}
+        />
       )}
-      <MainButton type="button" onClick={() => setEditing(true)}>
-        Editar
+      <MainButton type="button" onClick={() => setEditing((prev) => !prev)}>
+        {editing ? 'Cancelar' : 'Editar'}
       </MainButton>
       <MainButton type="button" onClick={deleteContact}>
         Apagar

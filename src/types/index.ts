@@ -14,8 +14,9 @@ export type ContactItemProps = { contact: Entry };
 export type ContactListProps = { contacts: Entry[] };
 
 export type FormProps = {
-  handleSubmit: (event: FormEvent<HTMLFormElement>, inputValues: Entry) => Promise<void>;
+  ariaLabel: string;
   initialValues: Entry;
+  handleSubmit: (event: FormEvent<HTMLFormElement>, inputValues: Entry) => Promise<void>;
   disabled?: boolean;
 };
 

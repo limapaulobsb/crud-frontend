@@ -21,78 +21,98 @@ describe('Form', () => {
   describe('Render', () => {
     it('should render the inputs', () => {
       // Arrange
-      render(<Form handleSubmit={mockHandleSubmit} initialValues={emptyValues} />);
+      render(
+        <Form
+          ariaLabel="form"
+          initialValues={emptyValues}
+          handleSubmit={mockHandleSubmit}
+        />
+      );
 
       // Act
-      const inputOne = screen.getByPlaceholderText('Digite um nome...');
-      const inputTwo = screen.getByPlaceholderText('Digite um e-mail...');
-      const inputThree = screen.getByPlaceholderText('Digite um telefone...');
+      const nameInput = screen.getByPlaceholderText('Digite um nome...');
+      const emailInput = screen.getByPlaceholderText('Digite um e-mail...');
+      const phoneNumberInput = screen.getByPlaceholderText('Digite um telefone...');
 
       // Assert
-      expect(inputOne).toBeInTheDocument();
-      expect(inputTwo).toBeInTheDocument();
-      expect(inputThree).toBeInTheDocument();
+      expect(nameInput).toBeInTheDocument();
+      expect(emailInput).toBeInTheDocument();
+      expect(phoneNumberInput).toBeInTheDocument();
     });
 
     it('should render a disabled submit button', () => {
       // Arrange
-      render(<Form handleSubmit={mockHandleSubmit} initialValues={emptyValues} />);
+      render(
+        <Form
+          ariaLabel="form"
+          initialValues={emptyValues}
+          handleSubmit={mockHandleSubmit}
+        />
+      );
 
       // Act
-      const button = screen.getByRole('button', { name: 'Salvar' });
+      const button = screen.getByRole('button', { name: /salvar/i });
 
       // Assert
-      expect(button).toBeDisabled(); // Assert
+      expect(button).toBeDisabled();
     });
 
     it('should render filled inputs when passed non-empty initial values', () => {
       // Arrange
-      render(<Form handleSubmit={mockHandleSubmit} initialValues={initialValues} />);
+      render(
+        <Form
+          ariaLabel="form"
+          initialValues={initialValues}
+          handleSubmit={mockHandleSubmit}
+        />
+      );
 
       // Act
-      const inputOne = screen.getByPlaceholderText('Digite um nome...');
-      const inputTwo = screen.getByPlaceholderText('Digite um e-mail...');
-      const inputThree = screen.getByPlaceholderText('Digite um telefone...');
+      const nameInput = screen.getByPlaceholderText('Digite um nome...');
+      const emailInput = screen.getByPlaceholderText('Digite um e-mail...');
+      const phoneNumberInput = screen.getByPlaceholderText('Digite um telefone...');
 
       // Assert
-      expect(inputOne).toHaveValue('Paulo');
-      expect(inputTwo).toHaveValue('limapaulobsb@gmail.com');
-      expect(inputThree).toHaveValue('+55 61 993597997');
+      expect(nameInput).toHaveValue('Paulo');
+      expect(emailInput).toHaveValue('limapaulobsb@gmail.com');
+      expect(phoneNumberInput).toHaveValue('+55 61 993597997');
     });
 
     it('should render disabled inputs when "disabled" prop is true', () => {
       // Arrange
       render(
         <Form
-          handleSubmit={mockHandleSubmit}
+          ariaLabel="form"
           initialValues={initialValues}
+          handleSubmit={mockHandleSubmit}
           disabled={true}
         />
       );
 
       // Act
-      const inputOne = screen.getByPlaceholderText('Digite um nome...');
-      const inputTwo = screen.getByPlaceholderText('Digite um e-mail...');
-      const inputThree = screen.getByPlaceholderText('Digite um telefone...');
+      const nameInput = screen.getByPlaceholderText('Digite um nome...');
+      const emailInput = screen.getByPlaceholderText('Digite um e-mail...');
+      const phoneNumberInput = screen.getByPlaceholderText('Digite um telefone...');
 
       // Assert
-      expect(inputOne).toBeDisabled();
-      expect(inputTwo).toBeDisabled();
-      expect(inputThree).toBeDisabled();
+      expect(nameInput).toBeDisabled();
+      expect(emailInput).toBeDisabled();
+      expect(phoneNumberInput).toBeDisabled();
     });
 
     it('should not render the submit button when "disabled" prop is true', () => {
       // Arrange
       render(
         <Form
-          handleSubmit={mockHandleSubmit}
+          ariaLabel="form"
           initialValues={initialValues}
+          handleSubmit={mockHandleSubmit}
           disabled={true}
         />
       );
 
       // Act
-      const button = screen.queryByRole('button', { name: 'Salvar' });
+      const button = screen.queryByRole('button', { name: /salvar/i });
 
       // Assert
       expect(button).not.toBeInTheDocument();
@@ -102,37 +122,49 @@ describe('Form', () => {
   describe('Behavior', () => {
     it('should be able to add text to the inputs', async () => {
       // Arrage
-      render(<Form handleSubmit={mockHandleSubmit} initialValues={emptyValues} />);
+      render(
+        <Form
+          ariaLabel="form"
+          initialValues={emptyValues}
+          handleSubmit={mockHandleSubmit}
+        />
+      );
 
       // Act
-      const inputOne = screen.getByPlaceholderText('Digite um nome...');
-      const inputTwo = screen.getByPlaceholderText('Digite um e-mail...');
-      const inputThree = screen.getByPlaceholderText('Digite um telefone...');
+      const nameInput = screen.getByPlaceholderText('Digite um nome...');
+      const emailInput = screen.getByPlaceholderText('Digite um e-mail...');
+      const phoneNumberInput = screen.getByPlaceholderText('Digite um telefone...');
 
-      await userEvent.type(inputOne, 'Paulo');
-      await userEvent.type(inputTwo, 'limapaulobsb@gmail.com');
-      await userEvent.type(inputThree, '+55 61 993597997');
+      await userEvent.type(nameInput, 'Paulo');
+      await userEvent.type(emailInput, 'limapaulobsb@gmail.com');
+      await userEvent.type(phoneNumberInput, '+55 61 993597997');
 
       // Assert
-      expect(inputOne).toHaveValue('Paulo');
-      expect(inputTwo).toHaveValue('limapaulobsb@gmail.com');
-      expect(inputThree).toHaveValue('+55 61 993597997');
+      expect(nameInput).toHaveValue('Paulo');
+      expect(emailInput).toHaveValue('limapaulobsb@gmail.com');
+      expect(phoneNumberInput).toHaveValue('+55 61 993597997');
     });
 
     it('should enable the submit button when text is input', async () => {
       // Arrange
-      render(<Form handleSubmit={mockHandleSubmit} initialValues={emptyValues} />);
+      render(
+        <Form
+          ariaLabel="form"
+          initialValues={emptyValues}
+          handleSubmit={mockHandleSubmit}
+        />
+      );
 
       // Act
-      const inputOne = screen.getByPlaceholderText('Digite um nome...');
-      const inputTwo = screen.getByPlaceholderText('Digite um e-mail...');
-      const inputThree = screen.getByPlaceholderText('Digite um telefone...');
+      const nameInput = screen.getByPlaceholderText('Digite um nome...');
+      const emailInput = screen.getByPlaceholderText('Digite um e-mail...');
+      const phoneNumberInput = screen.getByPlaceholderText('Digite um telefone...');
 
-      await userEvent.type(inputOne, 'Paulo');
-      await userEvent.type(inputTwo, 'limapaulobsb@gmail.com');
-      await userEvent.type(inputThree, '+55 61 993597997');
+      await userEvent.type(nameInput, 'Paulo');
+      await userEvent.type(emailInput, 'limapaulobsb@gmail.com');
+      await userEvent.type(phoneNumberInput, '+55 61 993597997');
 
-      const button = screen.getByRole('button', { name: 'Salvar' });
+      const button = screen.getByRole('button', { name: /salvar/i });
 
       // Assert
       expect(button).toBeEnabled();
@@ -140,19 +172,24 @@ describe('Form', () => {
 
     it('should call handleSubmit when submitted', async () => {
       // Arrange
-      render(<Form handleSubmit={mockHandleSubmit} initialValues={emptyValues} />);
+      render(
+        <Form
+          ariaLabel="form"
+          initialValues={emptyValues}
+          handleSubmit={mockHandleSubmit}
+        />
+      );
 
       // Act
-      const inputOne = screen.getByPlaceholderText('Digite um nome...');
-      const inputTwo = screen.getByPlaceholderText('Digite um e-mail...');
-      const inputThree = screen.getByPlaceholderText('Digite um telefone...');
+      const nameInput = screen.getByPlaceholderText('Digite um nome...');
+      const emailInput = screen.getByPlaceholderText('Digite um e-mail...');
+      const phoneNumberInput = screen.getByPlaceholderText('Digite um telefone...');
 
-      await userEvent.type(inputOne, 'Paulo');
-      await userEvent.type(inputTwo, 'limapaulobsb@gmail.com');
-      await userEvent.type(inputThree, '+55 61 993597997');
+      await userEvent.type(nameInput, 'Paulo');
+      await userEvent.type(emailInput, 'limapaulobsb@gmail.com');
+      await userEvent.type(phoneNumberInput, '+55 61 993597997');
 
-      const button = screen.getByRole('button', { name: 'Salvar' });
-
+      const button = screen.getByRole('button', { name: /salvar/i });
       await userEvent.click(button);
 
       // Assert

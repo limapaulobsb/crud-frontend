@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react';
 
 import Home from '../page';
 
-describe('Home', () => {
+describe('Home page', () => {
   it('should render a heading and navigation links', () => {
     // Arrange
     render(<Home />);

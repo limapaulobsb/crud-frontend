@@ -3,10 +3,12 @@
 The goal of this project is to demonstrate examples of CRUD operations for frontend using the following stack:
 
 - Next.js
-- TypeScript
 - Jest
-- styled-components
+- React Testing Library
 - json-server
+- styled-components
+
+All developed using TypeScript.
 
 ## Running locally
 
@@ -40,7 +42,7 @@ Run the application:
   npm run dev
 ```
 
-## Running the tests
+## Running tests
 
 ```bash
   npm test

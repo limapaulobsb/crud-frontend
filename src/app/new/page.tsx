@@ -1,13 +1,12 @@
 'use client';
 import React, { FormEvent } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import api from '@/api';
 import { Form, Header } from '@/components';
 import type { Entry } from '@/types';
 
-export default function newContact() {
+export default function NewContact() {
   const router = useRouter();
 
   const handleSubmit = async (event: FormEvent, inputValues: Entry) => {
@@ -20,12 +19,13 @@ export default function newContact() {
     <main>
       <Header heading="Novo contato" navLinks={[['/', 'Voltar']]} />
       <Form
-        handleSubmit={handleSubmit}
+        ariaLabel='form'
         initialValues={{
           name: '',
           email: '',
           phoneNumber: '',
         }}
+        handleSubmit={handleSubmit}
       />
     </main>
   );

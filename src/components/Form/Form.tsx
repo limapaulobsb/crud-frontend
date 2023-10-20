@@ -4,7 +4,12 @@ import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { MainButton, MainInput } from '@/components/styled';
 import type { FormProps } from '@/types';
 
-export default function Form({ handleSubmit, initialValues, disabled }: FormProps) {
+export default function Form({
+  ariaLabel,
+  initialValues,
+  handleSubmit,
+  disabled,
+}: FormProps) {
   const [inputValues, setInputValues] = useState(initialValues);
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -18,6 +23,7 @@ export default function Form({ handleSubmit, initialValues, disabled }: FormProp
 
   return (
     <form
+      aria-label={ariaLabel}
       onSubmit={(event: FormEvent<HTMLFormElement>) => handleSubmit(event, inputValues)}
     >
       <label>

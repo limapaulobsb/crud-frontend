@@ -13,15 +13,19 @@ describe('ContactList', () => {
 
     // Assert
     expect(links).toHaveLength(6);
+
     expect(links[0]).toHaveAttribute(
       'href',
       '/details/4c295000-ed75-4609-9437-faafc6efce34'
     );
+
     expect(links[0]).toHaveTextContent('André');
+
     expect(links[1]).toHaveAttribute(
       'href',
       '/details/a9881de2-79b8-4c65-80da-bbcb94268550'
     );
+
     expect(links[1]).toHaveTextContent('Bernardo');
   });
 });
