@@ -6,9 +6,11 @@
     "build": "next build",
     "dev": "next dev",
     "lint": "next lint",
+    "lint:styles": "stylelint '**/*.{css,ts,tsx}'",
     "server": "npx json-server --watch db.json",
     "start": "next start",
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "test:watch": "jest --watch"
   },
   "dependencies": {
     "next": "13.5.4",
@@ -35,6 +37,9 @@
     "json-server": "^0.17.4",
     "msw": "^1.3.2",
     "next-router-mock": "^0.9.10",
+    "postcss-styled-syntax": "^0.5.0",
+    "stylelint": "^15.11.0",
+    "stylelint-config-standard": "^34.0.0",
     "ts-jest": "^29.1.1",
     "typescript": "^5",
     "whatwg-fetch": "^3.6.19"
