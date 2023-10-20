@@ -1,10 +1,51 @@
 import Link from 'next/link';
+import styled from 'styled-components';
 
 import type { ContactListProps } from '@/types';
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Index = styled.div`
+  font-size: 2rem;
+  margin: 20px 0;
+`;
+
+const Avatar = styled.div`
+  align-items: center;
+  aspect-ratio: 1;
+  background-color: rgb(210 90 90);
+  border-radius: 50%;
+  display: flex;
+  font-size: 0.8rem;
+  font-weight: bold;
+  justify-content: center;
+  width: 30px;
+`;
+
+const List = styled.ol`
+  background-color: black;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding: 20px;
+`;
+
+const ListItem = styled.li`
+  display: flex;
+  font-size: 1.2rem;
+  align-items: center;
+  gap: 10px;
+  min-width: 300px;
+`;
+
 export default function ContactList({ contacts }: ContactListProps) {
   if (contacts.length === 0) {
-    return <div data-testid="contact-list">Sem registros.</div>;
+    return <Container data-testid="contact-list">Sem registros.</Container>;
   }
 
   const chars = [];
@@ -14,7 +55,7 @@ export default function ContactList({ contacts }: ContactListProps) {
   }
 
   return (
-    <div data-testid="contact-list">
+    <Container data-testid="contact-list">
       {chars.map((char) => {
         const contactsWithChar = contacts
           .filter(({ name }) => name.charAt(0).toUpperCase() === char)
@@ -25,16 +66,19 @@ export default function ContactList({ contacts }: ContactListProps) {
         }
 
         return (
-          <ol key={char}>
-            <span>{char}</span>
-            {contactsWithChar.map(({ id, name }) => (
-              <li key={id}>
-                <Link href={`/details/${id}`}>{name}</Link>
-              </li>
-            ))}
-          </ol>
+          <div key={char}>
+            <Index>{char}</Index>
+            <List>
+              {contactsWithChar.map(({ id, name }) => (
+                <ListItem key={id}>
+                  <Avatar>{char}</Avatar>
+                  <Link href={`/details/${id}`}>{name}</Link>
+                </ListItem>
+              ))}
+            </List>
+          </div>
         );
       })}
-    </div>
+    </Container>
   );
 }
