@@ -9,8 +9,6 @@ export type Entry = {
 
 export type ContactProps = { params: { id: string } };
 
-export type ContactItemProps = { contact: Entry };
-
 export type ContactListProps = { contacts: Entry[] };
 
 export type FormProps = {

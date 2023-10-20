@@ -1,5 +1,6 @@
 'use client';
-import React, { FormEvent, useEffect, useState } from 'react';
+
+import { FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import api from '@/api';
@@ -30,7 +31,6 @@ export default function Contact({ params }: ContactProps) {
     const getContact = async () => {
       const data = (await api.fetchContact(id)) as Entry;
       if (Object.keys(data).length) {
-        delete data.id;
         setContact(data);
       }
     };
@@ -44,7 +44,11 @@ export default function Contact({ params }: ContactProps) {
       {contact && (
         <Form
           ariaLabel="form"
-          initialValues={contact}
+          initialValues={{
+            name: contact.name,
+            email: contact.email,
+            phoneNumber: contact.phoneNumber,
+          }}
           handleSubmit={handleSubmit}
           disabled={!editing}
         />

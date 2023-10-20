@@ -5,8 +5,8 @@ The goal of this project is to demonstrate examples of CRUD operations for front
 - Next.js
 - Jest
 - React Testing Library
-- json-server
 - styled-components
+- json-server
 
 All developed using TypeScript.
 

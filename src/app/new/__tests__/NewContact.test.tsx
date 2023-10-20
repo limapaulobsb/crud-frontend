@@ -19,7 +19,7 @@ describe('NewContact page', () => {
 
       // Act
       const heading = screen.getByRole('heading', { name: /novo contato/i });
-      const link = screen.getByText('Voltar');
+      const link = screen.getByRole('link', { name: /voltar/i });
 
       // Assert
       expect(heading).toBeInTheDocument();
