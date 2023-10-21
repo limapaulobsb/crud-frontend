@@ -13,7 +13,7 @@ const Index = styled.div`
   margin: 20px 0;
 `;
 
-const Avatar = styled.div`
+const Avatar = styled.span`
   align-items: center;
   aspect-ratio: 1;
   background-color: rgb(210 90 90);
@@ -33,19 +33,19 @@ const List = styled.ol`
   gap: 10px;
   list-style: none;
   padding: 20px;
-`;
 
-const ListItem = styled.li`
-  display: flex;
-  font-size: 1.2rem;
-  align-items: center;
-  gap: 10px;
-  min-width: 300px;
+  & > li {
+    align-items: center;
+    display: flex;
+    font-size: 1.2rem;
+    gap: 10px;
+    min-width: 300px;
+  }
 `;
 
 export default function ContactList({ contacts }: ContactListProps) {
   if (contacts.length === 0) {
-    return <Container data-testid="contact-list">Sem registros.</Container>;
+    return <Container>Sem registros.</Container>;
   }
 
   const chars = [];
@@ -55,7 +55,7 @@ export default function ContactList({ contacts }: ContactListProps) {
   }
 
   return (
-    <Container data-testid="contact-list">
+    <Container>
       {chars.map((char) => {
         const contactsWithChar = contacts
           .filter(({ name }) => name.charAt(0).toUpperCase() === char)
@@ -70,10 +70,10 @@ export default function ContactList({ contacts }: ContactListProps) {
             <Index>{char}</Index>
             <List>
               {contactsWithChar.map(({ id, name }) => (
-                <ListItem key={id}>
+                <li key={id}>
                   <Avatar>{char}</Avatar>
                   <Link href={`/details/${id}`}>{name}</Link>
-                </ListItem>
+                </li>
               ))}
             </List>
           </div>

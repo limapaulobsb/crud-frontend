@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Button = styled.button`
+  border: none;
   color: inherit;
   cursor: pointer;
   font-family: inherit;
@@ -13,8 +14,8 @@ export const Button = styled.button`
 `;
 
 export const MainButton = styled(Button)`
-  border: 1px solid black;
+  background-color: black;
   height: 40px;
   text-transform: uppercase;
-  width: 100px;
+  width: 120px;
 `;

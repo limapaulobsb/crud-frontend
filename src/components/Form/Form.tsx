@@ -1,9 +1,27 @@
 'use client';
 
 import { ChangeEvent, FormEvent, useState } from 'react';
+import styled from 'styled-components';
 
-import { MainButton, MainInput } from '@/components/styled';
+import { MainButton, MainInput } from '../styled';
 import type { FormProps } from '@/types';
+
+const Container = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  & > label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  & > div {
+    height: 40px;
+    text-align: right;
+  }
+`;
 
 export default function Form({
   ariaLabel,
@@ -23,7 +41,7 @@ export default function Form({
   };
 
   return (
-    <form
+    <Container
       aria-label={ariaLabel}
       onSubmit={(event: FormEvent<HTMLFormElement>) => handleSubmit(event, inputValues)}
     >
@@ -57,14 +75,18 @@ export default function Form({
           disabled={disabled}
         />
       </label>
-      {!disabled && (
-        <MainButton
-          type="submit"
-          disabled={!inputValues.name || (!inputValues.email && !inputValues.phoneNumber)}
-        >
-          Salvar
-        </MainButton>
-      )}
-    </form>
+      <div>
+        {!disabled && (
+          <MainButton
+            type="submit"
+            disabled={
+              !inputValues.name || (!inputValues.email && !inputValues.phoneNumber)
+            }
+          >
+            Salvar
+          </MainButton>
+        )}
+      </div>
+    </Container>
   );
 }
