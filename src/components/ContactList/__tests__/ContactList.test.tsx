@@ -10,7 +10,7 @@ describe('ContactList', () => {
 
     // Act
     const lists = screen.getAllByRole('list');
-    const indexA = screen.getByText('A');
+    const indexA = screen.getByText('A', { selector: 'div' });
     const indexZ = screen.queryByText('Z');
 
     // Assert

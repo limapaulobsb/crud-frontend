@@ -7,7 +7,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "lint:styles": "stylelint '**/*.{css,ts,tsx}'",
-    "server": "npx json-server --watch db.json",
+    "server": "json-server --watch db.json",
     "start": "next start",
     "test": "jest --verbose",
     "test:watch": "jest --watch"

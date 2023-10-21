@@ -1,12 +1,20 @@
 'use client';
 
-import { FormEvent, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { FormEvent, useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 import api from '@/api';
 import { Form, Header } from '@/components';
 import { MainButton } from '@/components/styled';
 import type { Entry, ContactProps } from '@/types';
+
+const Container = styled.main`
+  & > div {
+    display: flex;
+    gap: 20px;
+  }
+`;
 
 export default function Contact({ params }: ContactProps) {
   const [contact, setContact] = useState<null | Entry>(null);
@@ -39,7 +47,7 @@ export default function Contact({ params }: ContactProps) {
   }, [id]);
 
   return (
-    <main>
+    <Container>
       <Header heading="Detalhes do contato" navLinks={[['/', 'Voltar']]} />
       {contact && (
         <Form
@@ -53,12 +61,14 @@ export default function Contact({ params }: ContactProps) {
           disabled={!editing}
         />
       )}
-      <MainButton type="button" onClick={() => setEditing((prev) => !prev)}>
-        {editing ? 'Cancelar' : 'Editar'}
-      </MainButton>
-      <MainButton type="button" onClick={deleteContact}>
-        Apagar
-      </MainButton>
-    </main>
+      <div>
+        <MainButton type="button" onClick={() => setEditing((prev) => !prev)}>
+          {editing ? 'Cancelar' : 'Editar'}
+        </MainButton>
+        <MainButton type="button" onClick={deleteContact}>
+          Apagar
+        </MainButton>
+      </div>
+    </Container>
   );
 }
